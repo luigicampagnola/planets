@@ -1,12 +1,8 @@
 const API_URL = "http://localhost:8000";
 
-function httpGetPlanets() {
-  fetch(`${API_URL}/planets`, {
-    method: "get",
-    headers: { "Content-Type": "application/json" },
-  })
-    .then((res) => res.json())
-    .then((data) => console.log(data));
+async function httpGetPlanets() {
+ const response = fetch(`${API_URL}/planets`);
+ return (await response).json()
 }
 
 async function httpGetLaunches() {
@@ -25,3 +21,9 @@ async function httpAbortLaunch(id) {
 }
 
 export { httpGetPlanets, httpGetLaunches, httpSubmitLaunch, httpAbortLaunch };
+
+
+/* async function httpGetPlanets(){
+  const response = fetch(`${API_URL}/planets);
+  return await response.json()
+} */
